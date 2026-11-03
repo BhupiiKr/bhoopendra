@@ -1,186 +1,258 @@
+
 "use client";
 
 import Image from "next/image";
 import { useState } from "react";
 
-const interests = [
-  "Artificial Intelligence & Machine Learning",
-  "Graph Neural Networks",
-  "Financial Fraud & Anomaly Detection",
-  "Privacy-Preserving Machine Learning",
-  "Blockchain & Secure Computing",
-  "Quantum Machine Learning",
-];
-
-const projects = [
-  ["UGEM-CCL", "GNN framework for fraud detection"],
-  ["PQ-MPC", "Post-quantum secure neural inference"],
-  ["VAE-TF", "Variational autoencoder for fraud detection"],
-  ["LedgerCache", "Blockchain-enabled secure edge caching"],
-];
-
-const publications = [
-  "Hybrid Chaos System for Secure Image Encryption",
-  "Variational Autoencoder Framework for Financial Fraud Detection",
-  "Post-Quantum Secure Multi-Party Computation",
-];
-
-const navItems = [
-  ["Home", "#home", "⌂"],
-  ["About Me", "#about", "♙"],
-  ["Research", "#research", "⚗"],
-  ["Projects", "#projects", "▦"],
-  ["Publications", "#publications", "▤"],
-  ["Contact", "#contact", "✉"],
+const navigation = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Research", href: "#research" },
+  { label: "Projects", href: "#projects" },
+  { label: "Publications", href: "#publications" },
+  { label: "CV", href: "/cv.pdf" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Home() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className={`portfolio-shell ${sidebarOpen ? "" : "sidebar-collapsed"}`}>
-      <aside className="sidebar">
-        <a className="identity" href="#home" aria-label="Bhoopendra Kumar home">
-          <span className="monogram">BK</span>
-          <span className="identity-copy">
-            <strong>Bhoopendra Kumar</strong>
-            <small>Academic Portfolio</small>
-          </span>
+    <main>
+      <header className="topbar">
+        <a href="#home" className="brand">
+          <span className="brand-mark">BK</span>
+          <span>Bhoopendra Kumar</span>
         </a>
 
-        <nav className="side-nav" aria-label="Main navigation">
-          {navItems.map(([label, href, icon], index) => (
-            <a className={index === 0 ? "active" : ""} href={href} key={label}>
-              <span className="nav-icon">{icon}</span>
-              <span className="nav-label">{label}</span>
+        <nav className="desktop-nav">
+          {navigation.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.label === "CV" ? "_blank" : undefined}
+            >
+              {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="sidebar-motto">
-          <span>Research</span>
-          <span>Teach</span>
-          <span>Innovate</span>
-          <i />
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
+          <span>{menuOpen ? "✕" : "☰"}</span>
+        </button>
+      </header>
+
+      <div
+        className={`sidebar-overlay ${menuOpen ? "show" : ""}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      <aside className={`side-menu ${menuOpen ? "open" : ""}`}>
+        <div className="side-heading">
+          <span>Navigation</span>
+          <button onClick={() => setMenuOpen(false)}>✕</button>
         </div>
-        <div className="sidebar-bottom">COMPUTE · CREATE · CONTRIBUTE</div>
+
+        {navigation.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            target={item.label === "CV" ? "_blank" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            {item.label}
+            <span>↗</span>
+          </a>
+        ))}
       </aside>
 
-      <section className="workspace">
-        <header className="topbar">
-          <div className="topbar-left">
-            <button
-              className="sidebar-toggle"
-              type="button"
-              onClick={() => setSidebarOpen((value) => !value)}
-              aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-              aria-expanded={sidebarOpen}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-            <div className="topbar-name">
-              <strong>Bhoopendra Kumar</strong>
-              <small>Assistant Professor</small>
+      <section className="hero" id="home">
+        <div className="hero-glow glow-one" />
+        <div className="hero-glow glow-two" />
+
+        <div className="hero-content">
+          <div className="hero-left">
+            <div className="eyebrow">
+              <span className="status-dot" />
+              ASSISTANT PROFESSOR
+            </div>
+
+            <h1>
+              Bhoopendra <span>Kumar</span>
+            </h1>
+
+            <h2>Computer Science &amp; Applied Mathematics</h2>
+
+            <p className="tagline">
+              Exploring intelligent systems for a secure and smart world.
+            </p>
+
+            <div className="intro" id="about">
+              I am an Assistant Professor at <strong>VIPS-TC, Delhi</strong>,
+              in the Department of Computer Science and Applied Mathematics.
+              I hold an M.Tech in Computer Science and Information Security
+              from <strong>MNIT Jaipur</strong>. My academic and research
+              interests lie in Artificial Intelligence, Machine Learning,
+              Deep Learning and Graph Neural Networks, with a focus on
+              financial fraud detection, anomaly detection and intelligent
+              computing systems. I am passionate about teaching, research
+              and developing practical solutions to real-world challenges.
+            </div>
+
+            <div className="hero-tags">
+              <span>Artificial Intelligence</span>
+              <span>Machine Learning</span>
+              <span>Graph Neural Networks</span>
+              <span>Intelligent Computing</span>
             </div>
           </div>
 
-          <div className="topbar-links">
-            <a href="mailto:kumarbhoop7@gmail.com">✉ <span>Email</span></a>
-            <a href="https://www.linkedin.com/in/bhoopendra-kumar-15532415a/" target="_blank" rel="noreferrer">in <span>LinkedIn</span></a>
-            <a href="https://scholar.google.com/citations?user=TFkBWgwAAAAJ&hl=en" target="_blank" rel="noreferrer">♧ <span>Google Scholar</span></a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer">↓ <span>CV</span></a>
-          </div>
-        </header>
-
-        <div className="dashboard" id="home">
-          <section className="hero-panel">
-            <div className="hero-copy">
-              <div className="eyebrow"><span className="live-dot" /> ASSISTANT PROFESSOR</div>
-              <h1>Bhoopendra <em>Kumar</em></h1>
-              <h2>Computer Science &amp; Applied Mathematics</h2>
-              <p className="handwritten">Exploring intelligent systems for a secure and smart world.</p>
-              <p className="hero-description">
-                Researching the intersection of Artificial Intelligence, Machine Learning,
-                Graph Neural Networks and intelligent computing systems.
-              </p>
-              <div className="hero-actions">
-                <a className="button button-blue" href="#projects">Explore My Work <b>→</b></a>
-                <a className="button button-outline" href="mailto:YOUR_EMAIL@example.com">Get in Touch <b>✉</b></a>
-              </div>
-            </div>
-
-            <div className="portrait-wrap">
+          <div className="hero-right">
+            <div className="portrait-frame">
               <div className="portrait-glow" />
-              <div className="portrait-frame">
-                <Image
-                  src="/profile.jpg"
-                  alt="Bhoopendra Kumar"
-                  fill
-                  priority
-                  sizes="(max-width: 800px) 70vw, 250px"
-                  className="portrait"
-                />
-              </div>
-              <div className="portrait-label">
-                <strong>Bhoopendra Kumar</strong>
-                <span>Assistant Professor · Computer Science</span>
+              <Image
+                src="/profile.jpg"
+                alt="Bhoopendra Kumar"
+                fill
+                priority
+                sizes="(max-width: 768px) 80vw, 360px"
+                className="portrait"
+              />
+
+              <div className="portrait-caption">
+                <h3>Bhoopendra Kumar</h3>
+                <p>Assistant Professor</p>
+                <span>Computer Science &amp; Applied Mathematics</span>
               </div>
             </div>
-          </section>
 
-          <section className="stats-grid" id="about" aria-label="Academic profile highlights">
-            <article className="stat-card">
-              <span className="stat-icon">♜</span>
-              <div><strong>VIPS-TC, Delhi</strong><small>Assistant Professor</small></div>
-            </article>
-            <article className="stat-card">
-              <span className="stat-icon">◇</span>
-              <div><strong>M.Tech</strong><small>MNIT Jaipur</small></div>
-            </article>
-            <article className="stat-card">
-              <span className="stat-icon">⚗</span>
-              <div><strong>Research Areas</strong><small>AI · ML · GNN · Security</small></div>
-            </article>
-            <article className="stat-card">
-              <span className="stat-icon">▱</span>
-              <div><strong>Research Focus</strong><small>Intelligent &amp; Secure Computing</small></div>
-            </article>
-          </section>
-
-          <section className="lower-grid">
-            <article className="info-panel" id="research">
-              <h3><span className="panel-icon">◎</span> Research Interests</h3>
-              <ul className="interest-list">
-                {interests.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </article>
-
-            <article className="info-panel" id="projects">
-              <h3><span className="panel-icon code-icon">&lt;/&gt;</span> Selected Projects</h3>
-              <ul className="project-list">
-                {projects.map(([name, detail]) => (
-                  <li key={name}><b>{name}</b><span> — {detail}</span></li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="info-panel" id="publications">
-              <h3><span className="panel-icon">▤</span> Recent Research</h3>
-              <ul className="publication-list">
-                {publications.map((item) => <li key={item}>{item}<span>↗</span></li>)}
-              </ul>
-            </article>
-          </section>
-
-          <footer className="dashboard-footer" id="contact">
-            <span>© {new Date().getFullYear()} Bhoopendra Kumar</span>
-            <span>Research · Teaching · Innovation</span>
-            <a href="mailto:kumarbhoop7@gmail.com">Let’s collaborate ↗</a>
-          </footer>
+            <div className="image-caption-small">
+              <span className="status-dot" />
+              Researcher · Educator · Innovator
+            </div>
+          </div>
         </div>
       </section>
+
+      <section className="content-section" id="research">
+        <div className="section-heading">
+          <span>01 / WHAT I EXPLORE</span>
+          <h2>Research Interests</h2>
+          <p>
+            Exploring intelligent and secure computational approaches to
+            complex real-world problems.
+          </p>
+        </div>
+
+        <div className="research-grid">
+          {[
+            ["01", "Artificial Intelligence", "Intelligent systems and AI-driven problem solving."],
+            ["02", "Machine & Deep Learning", "Learning representations and predictive models."],
+            ["03", "Graph Neural Networks", "Graph-based learning and relational intelligence."],
+            ["04", "Fraud & Anomaly Detection", "Detecting suspicious patterns in complex data."],
+            ["05", "Privacy-Preserving ML", "Secure and privacy-aware intelligent computation."],
+            ["06", "Blockchain & Secure Computing", "Trustworthy and decentralized computing systems."],
+          ].map(([number, title, description]) => (
+            <article className="research-card" key={number}>
+              <span className="card-number">{number}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section projects-section" id="projects">
+        <div className="section-heading">
+          <span>02 / SELECTED WORK</span>
+          <h2>Research &amp; Projects</h2>
+        </div>
+
+        <div className="project-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>UGEM-CCL</h3>
+              <p>GNN-based framework for financial fraud detection.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>02</span>
+            <div>
+              <h3>PQ-MPC</h3>
+              <p>Post-quantum secure multi-party computation for confidential inference.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>03</span>
+            <div>
+              <h3>VAE-TF</h3>
+              <p>Variational autoencoder framework for financial fraud detection.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>04</span>
+            <div>
+              <h3>LedgerCache</h3>
+              <p>Blockchain-enabled secure caching for edge and IoT systems.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>05</span>
+            <div>
+              <h3>Hybrid Chaos-Based Image Encryption</h3>
+              <p>Chaotic-map-based image encryption for secure communication.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="content-section publications-section" id="publications">
+        <div className="section-heading">
+          <span>03 / ACADEMIC CONTRIBUTIONS</span>
+          <h2>Publications</h2>
+          <p>
+            Research contributions in intelligent computing, machine learning
+            and information security.
+          </p>
+        </div>
+        <div className="publication-note">
+          <h3>Research in Progress</h3>
+          <p>
+            Exploring emerging research directions in AI, graph learning,
+            secure computing and intelligent systems.
+          </p>
+        </div>
+      </section>
+
+      <footer className="footer" id="contact">
+        <div>
+          <span className="footer-label">LET&apos;S CONNECT</span>
+          <h2>Have a research idea?</h2>
+          <p>
+            Open to academic collaboration, research discussions and
+            knowledge sharing.
+          </p>
+        </div>
+
+        <a href="mailto:YOUR_EMAIL@example.com" className="email-link">
+          Get in touch ↗
+        </a>
+
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Bhoopendra Kumar</span>
+          <span>Designed with curiosity &amp; purpose.</span>
+        </div>
+      </footer>
     </main>
   );
 }
