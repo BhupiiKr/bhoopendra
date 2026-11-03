@@ -42,7 +42,7 @@ const researchAreas = [
   },
   {
     icon: Database,
-    title: "Secure Computing & Blockchain",
+    title: "Blockchain & Secure Computing",
   },
 ];
 
@@ -70,7 +70,7 @@ const projects = [
     category: "INTELLIGENT SECURITY",
     title: "VAE-TF",
     description:
-      "A variational autoencoder-based framework designed for identifying complex and previously unseen financial fraud patterns.",
+      "A variational autoencoder-based framework for identifying complex and previously unseen financial fraud patterns.",
     tags: ["VAE", "Financial Fraud", "Deep Learning"],
     icon: BrainCircuit,
   },
@@ -79,7 +79,7 @@ const projects = [
     category: "COMPUTATIONAL INTELLIGENCE",
     title: "Hybrid Chaos-Based Image Encryption",
     description:
-      "Investigating hybrid chaotic maps and their use in image-encryption workflows, including key evolution, confusion and diffusion.",
+      "Investigating hybrid chaotic maps for image encryption, including key evolution, confusion and diffusion.",
     tags: ["Chaotic Maps", "Image Encryption", "IoT"],
     icon: Microscope,
   },
@@ -105,25 +105,25 @@ const projects = [
 
 const publications = [
   {
-    kind: "RESEARCH",
+    number: "01",
     title: "Hybrid Chaos System for Secure Image Encryption",
     description:
       "Research on combining chaotic maps for image encryption, with applications in IoT security.",
-    status: "Research work",
+    status: "Research direction",
   },
   {
-    kind: "RESEARCH",
+    number: "02",
     title: "Variational Autoencoder Framework for Financial Fraud Detection",
     description:
       "Deep learning-based exploration of anomaly detection in financial transaction data.",
-    status: "Research work",
+    status: "Research direction",
   },
   {
-    kind: "RESEARCH",
+    number: "03",
     title: "Post-Quantum Secure Multi-Party Computation",
     description:
       "Investigating confidential neural network inference using post-quantum cryptographic techniques.",
-    status: "Research work",
+    status: "Research direction",
   },
 ];
 
@@ -137,8 +137,14 @@ export default function Home() {
       {/* NAVIGATION */}
 
       <header className="site-header">
-        <a href="#home" className="brand" onClick={closeMenu}>
+        <a
+          href="#home"
+          className="brand"
+          onClick={closeMenu}
+          aria-label="Bhoopendra Kumar home"
+        >
           <div className="brand-mark">BK</div>
+
           <div className="brand-name">
             Bhoopendra Kumar
             <span className="brand-subtitle">
@@ -157,22 +163,25 @@ export default function Home() {
         </button>
 
         <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
+          <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#research" onClick={closeMenu}>Research</a>
           <a href="#projects" onClick={closeMenu}>Projects</a>
           <a href="#publications" onClick={closeMenu}>Publications</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
+
           <a
             href="#contact"
             className="nav-cta"
             onClick={closeMenu}
           >
-            Get in touch <ArrowUpRight size={14} />
+            Get in touch
+            <ArrowUpRight size={14} />
           </a>
         </nav>
       </header>
 
-      {/* HERO */}
+      {/* HERO SECTION */}
 
       <section className="hero section-wrap" id="home">
         <div className="hero-content">
@@ -200,18 +209,22 @@ export default function Home() {
 
           <p className="hero-lede">
             I am an academic and researcher interested in building
-            intelligent, reliable and privacy-aware computing systems.
-            My research explores how artificial intelligence, machine
-            learning and emerging computational technologies can
-            address real-world challenges.
+            intelligent, reliable and privacy-aware computing
+            systems. My research explores how artificial
+            intelligence, machine learning and emerging
+            computational technologies can address real-world
+            challenges.
           </p>
 
           <div className="hero-actions">
             <a href="#research" className="button button-primary">
-              Explore my research <ArrowRight size={15} />
+              Explore my research
+              <ArrowRight size={15} />
             </a>
+
             <a href="#contact" className="button button-secondary">
-              <Mail size={14} /> Contact me
+              <Mail size={14} />
+              Contact me
             </a>
           </div>
 
@@ -231,11 +244,13 @@ export default function Home() {
             <div className="meta-divider" />
 
             <div className="meta-item">
-              <span className="meta-label">FOCUS</span>
-              <strong>AI · Security · ML</strong>
+              <span className="meta-label">RESEARCH FOCUS</span>
+              <strong>AI · ML · GNN</strong>
             </div>
           </div>
         </div>
+
+        {/* ABSTRACT RESEARCH VISUAL */}
 
         <div className="hero-panel">
           <div className="panel-topline">
@@ -246,6 +261,7 @@ export default function Home() {
           <div className="research-emblem">
             <div className="emblem-ring ring-one" />
             <div className="emblem-ring ring-two" />
+
             <span className="emblem-dot dot-one" />
             <span className="emblem-dot dot-two" />
             <span className="emblem-dot dot-three" />
@@ -265,7 +281,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CREDENTIAL STRIP */}
+      {/* ACADEMIC CREDENTIALS */}
 
       <div className="credential-strip">
         <div className="credential-inner section-wrap">
@@ -273,14 +289,17 @@ export default function Home() {
             <GraduationCap size={19} />
             M.Tech · MNIT Jaipur
           </div>
+
           <div>
             <BookOpen size={18} />
             Academic Research
           </div>
+
           <div>
             <BrainCircuit size={18} />
             Artificial Intelligence
           </div>
+
           <div>
             <Code2 size={18} />
             Computational Intelligence
@@ -294,6 +313,7 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <span className="section-kicker">01 — ABOUT ME</span>
+
             <h2>
               A passion for
               <br />
@@ -302,9 +322,9 @@ export default function Home() {
           </div>
 
           <p className="section-intro">
-            Bridging academic teaching, scientific exploration and
-            practical computing to contribute towards the next
-            generation of intelligent technologies.
+            Bridging academic teaching, scientific exploration
+            and practical computing to contribute towards the
+            next generation of intelligent technologies.
           </p>
         </div>
 
@@ -313,14 +333,18 @@ export default function Home() {
             <div className="card-icon">
               <GraduationCap size={22} />
             </div>
+
             <span className="card-label">ACADEMIC PROFILE</span>
+
             <h3>Educator & Researcher</h3>
+
             <p>
-              Currently serving as an Assistant Professor in the
-              Department of Computer Science and Applied Mathematics
-              at Vivekananda Institute of Professional Studies –
-              Technical Campus, Delhi.
+              Currently serving as an Assistant Professor in
+              the Department of Computer Science and Applied
+              Mathematics at Vivekananda Institute of
+              Professional Studies – Technical Campus, Delhi.
             </p>
+
             <div className="about-foot">
               <span className="tiny-dot" />
               Teaching · Research · Innovation
@@ -331,13 +355,19 @@ export default function Home() {
             <div className="card-icon">
               <Microscope size={22} />
             </div>
+
             <span className="card-label">EDUCATION</span>
+
             <h3>M.Tech</h3>
+
             <p>
-              Computer Science and Information Security
+              Computer Science and Information Security.
             </p>
+
             <div className="card-divider" />
+
             <strong>MNIT Jaipur</strong>
+
             <span className="subline">
               Malaviya National Institute of Technology
             </span>
@@ -347,13 +377,17 @@ export default function Home() {
             <div className="card-icon">
               <Lightbulb size={22} />
             </div>
+
             <span className="card-label">RESEARCH PHILOSOPHY</span>
+
             <h3>Ideas into impact</h3>
+
             <p>
-              I believe in combining theoretical foundations
-              with practical experimentation to develop
-              meaningful technological solutions.
+              Combining theoretical foundations with practical
+              experimentation to develop meaningful
+              technological solutions.
             </p>
+
             <div className="tag-row">
               <span>Explore</span>
               <span>Experiment</span>
@@ -368,16 +402,20 @@ export default function Home() {
       <section className="research-section" id="research">
         <div className="section-wrap research-layout">
           <div>
-            <span className="section-kicker">02 — RESEARCH INTERESTS</span>
+            <span className="section-kicker">
+              02 — RESEARCH INTERESTS
+            </span>
+
             <h2>
               Exploring complex
               <br />
               computational challenges.
             </h2>
+
             <p className="section-intro">
-              My research interests focus on intelligent systems,
-              advanced learning architectures and secure
-              computational frameworks.
+              My research interests focus on intelligent
+              systems, advanced learning architectures and
+              secure computational frameworks.
             </p>
           </div>
 
@@ -390,7 +428,9 @@ export default function Home() {
                   <span className="interest-number">
                     0{index + 1}
                   </span>
+
                   <span>{area.title}</span>
+
                   <Icon size={17} />
                 </div>
               );
@@ -399,21 +439,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
+      {/* SELECTED PROJECTS */}
 
       <section className="content-section section-wrap" id="projects">
         <div className="section-heading">
           <div>
-            <span className="section-kicker">03 — SELECTED WORK</span>
-            <h2>
-              Research & projects.
-            </h2>
+            <span className="section-kicker">
+              03 — SELECTED WORK
+            </span>
+
+            <h2>Research & projects.</h2>
           </div>
 
           <p className="section-intro">
-            A selection of research directions and computational
-            projects exploring the possibilities of intelligent
-            and secure systems.
+            A selection of research directions and
+            computational projects exploring the possibilities
+            of intelligent and secure systems.
           </p>
         </div>
 
@@ -458,31 +499,35 @@ export default function Home() {
             <span className="section-kicker">
               04 — PUBLICATIONS & RESEARCH
             </span>
+
             <h2>
               Knowledge through
               <br />
               research.
             </h2>
+
             <p className="section-intro">
-              Research directions and ongoing explorations in
-              intelligent computing, machine learning and
-              information security.
+              Research directions and ongoing explorations
+              in intelligent computing, machine learning
+              and information security.
             </p>
           </div>
 
           <div className="publication-list">
-            {publications.map((publication, index) => (
+            {publications.map((publication) => (
               <article
                 className="publication-item"
-                key={publication.title}
+                key={publication.number}
               >
                 <span className="pub-kind">
-                  {publication.kind} · 0{index + 1}
+                  RESEARCH · {publication.number}
                 </span>
 
                 <div>
                   <h3>{publication.title}</h3>
+
                   <p>{publication.description}</p>
+
                   <span className="pub-note">
                     {publication.status}
                   </span>
@@ -501,20 +546,20 @@ export default function Home() {
       >
         <div className="contact-card">
           <span className="section-kicker">
-            05 — Let&apos;s connect
+            05 — LET US CONNECT
           </span>
 
           <h2>
             Have an idea?
             <br />
-            I&apos;m an academic
+            Let us explore it together.
           </h2>
 
           <p>
             I welcome opportunities for academic collaboration,
-            research discussions, knowledge sharing and innovative
-            projects in artificial intelligence and intelligent
-            computing.
+            research discussions, knowledge sharing and
+            innovative projects in artificial intelligence
+            and intelligent computing.
           </p>
 
           <div className="contact-actions">
@@ -529,10 +574,11 @@ export default function Home() {
             </a>
 
             <a
-              href="#home"
+              href="mailto:"
               className="button button-secondary"
             >
-              Back to top <ArrowDown size={14} />
+              <Mail size={14} />
+              Email me
             </a>
           </div>
         </div>
@@ -543,6 +589,7 @@ export default function Home() {
       <footer className="site-footer section-wrap">
         <div className="brand footer-brand">
           <div className="brand-mark">BK</div>
+
           <div className="brand-name">
             Bhoopendra Kumar
             <span className="brand-subtitle">
@@ -558,6 +605,7 @@ export default function Home() {
 
         <a href="#home" className="back-top">
           Back to top ↑
+          <ArrowDown size={12} />
         </a>
       </footer>
     </main>
