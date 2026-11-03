@@ -1,11 +1,6 @@
 
 import type { Metadata } from "next";
-import {
-  Merriweather,
-  Source_Sans_3,
-  Caveat,
-} from "next/font/google";
-
+import { Merriweather, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
 const merriweather = Merriweather({
@@ -22,27 +17,10 @@ const sourceSans = Source_Sans_3({
   display: "swap",
 });
 
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-caveat",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Bhoopendra Kumar | Academic Portfolio",
   description:
-    "Academic portfolio of Bhoopendra Kumar, Assistant Professor in Computer Science and Applied Mathematics. Research interests include Artificial Intelligence, Machine Learning, Deep Learning and Intelligent Systems.",
-  keywords: [
-    "Bhoopendra Kumar",
-    "Academic Portfolio",
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Deep Learning",
-    "Computer Science",
-    "Research",
-  ],
-  authors: [{ name: "Bhoopendra Kumar" }],
+    "Academic portfolio of Bhoopendra Kumar, Assistant Professor in Computer Science and Applied Mathematics, researching AI, Machine Learning and Intelligent Systems.",
 };
 
 export default function RootLayout({
@@ -53,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${merriweather.variable} ${sourceSans.variable} ${caveat.variable}`}
+        className={`${merriweather.variable} ${sourceSans.variable}`}
       >
         {children}
       </body>
