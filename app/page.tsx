@@ -501,13 +501,13 @@ export default function Home() {
       >
         <div className="contact-card">
           <span className="section-kicker">
-            05 — LET'S CONNECT
+            05 — Let&apos;s connect
           </span>
 
           <h2>
             Have an idea?
             <br />
-            Let's explore it together.
+            I&apos;m an academic
           </h2>
 
           <p>
