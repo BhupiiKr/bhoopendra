@@ -93,3 +93,94 @@ export default function Home() {
             <a href="/cv.pdf" target="_blank" rel="noreferrer">↓ <span>CV</span></a>
           </div>
         </header>
+
+        <div className="dashboard" id="home">
+          <section className="hero-panel">
+            <div className="hero-copy">
+              <div className="eyebrow"><span className="live-dot" /> ASSISTANT PROFESSOR</div>
+              <h1>Bhoopendra <em>Kumar</em></h1>
+              <h2>Computer Science &amp; Applied Mathematics</h2>
+              <p className="handwritten">Exploring intelligent systems for a secure and smart world.</p>
+              <p className="hero-description">
+                Researching the intersection of Artificial Intelligence, Machine Learning,
+                Graph Neural Networks and intelligent computing systems.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-blue" href="#projects">Explore My Work <b>→</b></a>
+                <a className="button button-outline" href="mailto:YOUR_EMAIL@example.com">Get in Touch <b>✉</b></a>
+              </div>
+            </div>
+
+            <div className="portrait-wrap">
+              <div className="portrait-glow" />
+              <div className="portrait-frame">
+                <Image
+                  src="/profile.jpg"
+                  alt="Bhoopendra Kumar"
+                  fill
+                  priority
+                  sizes="(max-width: 800px) 70vw, 250px"
+                  className="portrait"
+                />
+              </div>
+              <div className="portrait-label">
+                <strong>Bhoopendra Kumar</strong>
+                <span>Assistant Professor · Computer Science</span>
+              </div>
+            </div>
+          </section>
+
+          <section className="stats-grid" id="about" aria-label="Academic profile highlights">
+            <article className="stat-card">
+              <span className="stat-icon">♜</span>
+              <div><strong>VIPS-TC, Delhi</strong><small>Assistant Professor</small></div>
+            </article>
+            <article className="stat-card">
+              <span className="stat-icon">◇</span>
+              <div><strong>M.Tech</strong><small>MNIT Jaipur</small></div>
+            </article>
+            <article className="stat-card">
+              <span className="stat-icon">⚗</span>
+              <div><strong>Research Areas</strong><small>AI · ML · GNN · Security</small></div>
+            </article>
+            <article className="stat-card">
+              <span className="stat-icon">▱</span>
+              <div><strong>Research Focus</strong><small>Intelligent &amp; Secure Computing</small></div>
+            </article>
+          </section>
+
+          <section className="lower-grid">
+            <article className="info-panel" id="research">
+              <h3><span className="panel-icon">◎</span> Research Interests</h3>
+              <ul className="interest-list">
+                {interests.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </article>
+
+            <article className="info-panel" id="projects">
+              <h3><span className="panel-icon code-icon">&lt;/&gt;</span> Selected Projects</h3>
+              <ul className="project-list">
+                {projects.map(([name, detail]) => (
+                  <li key={name}><b>{name}</b><span> — {detail}</span></li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="info-panel" id="publications">
+              <h3><span className="panel-icon">▤</span> Recent Research</h3>
+              <ul className="publication-list">
+                {publications.map((item) => <li key={item}>{item}<span>↗</span></li>)}
+              </ul>
+            </article>
+          </section>
+
+          <footer className="dashboard-footer" id="contact">
+            <span>© {new Date().getFullYear()} Bhoopendra Kumar</span>
+            <span>Research · Teaching · Innovation</span>
+            <a href="mailto:YOUR_EMAIL@example.com">Let’s collaborate ↗</a>
+          </footer>
+        </div>
+      </section>
+    </main>
+  );
+}
