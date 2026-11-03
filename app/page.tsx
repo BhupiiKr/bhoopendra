@@ -177,7 +177,7 @@ export default function Home() {
           <footer className="dashboard-footer" id="contact">
             <span>© {new Date().getFullYear()} Bhoopendra Kumar</span>
             <span>Research · Teaching · Innovation</span>
-            <a href="mailto:YOUR_EMAIL@example.com">Let’s collaborate ↗</a>
+            <a href="mailto:kumarbhoop7@gmail.com">Let’s collaborate ↗</a>
           </footer>
         </div>
       </section>
