@@ -87,9 +87,9 @@ export default function Home() {
           </div>
 
           <div className="topbar-links">
-            <a href="mailto:YOUR_EMAIL@example.com">✉ <span>Email</span></a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">in <span>LinkedIn</span></a>
-            <a href="https://scholar.google.com/" target="_blank" rel="noreferrer">♧ <span>Google Scholar</span></a>
+            <a href="mailto:kumarbhoop7@gmail.com">✉ <span>Email</span></a>
+            <a href="https://www.linkedin.com/in/bhoopendra-kumar-15532415a/" target="_blank" rel="noreferrer">in <span>LinkedIn</span></a>
+            <a href="https://scholar.google.com/citations?user=TFkBWgwAAAAJ&hl=en" target="_blank" rel="noreferrer">♧ <span>Google Scholar</span></a>
             <a href="/cv.pdf" target="_blank" rel="noreferrer">↓ <span>CV</span></a>
           </div>
         </header>
