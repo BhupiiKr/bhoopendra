@@ -1,49 +1,16 @@
 
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  BrainCircuit,
-  BookOpen,
-  GraduationCap,
-  Microscope,
-  ShieldCheck,
-  Network,
-  Cpu,
-  Code2,
-  Mail,
-  Menu,
-  X,
-  ExternalLink,
-  Lightbulb,
-  Database,
-  Fingerprint,
-} from "lucide-react";
 
 const researchAreas = [
-  {
-    icon: BrainCircuit,
-    title: "Artificial Intelligence & Machine Learning",
-  },
-  {
-    icon: Network,
-    title: "Graph Neural Networks & Deep Learning",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Intelligent Fraud & Anomaly Detection",
-  },
-  {
-    icon: Cpu,
-    title: "Privacy-Preserving Machine Learning",
-  },
-  {
-    icon: Database,
-    title: "Blockchain & Secure Computing",
-  },
+  "Artificial Intelligence and Machine Learning",
+  "Graph Neural Networks and Deep Learning",
+  "Financial Fraud and Anomaly Detection",
+  "Privacy-Preserving Machine Learning",
+  "Blockchain and Secure Computing",
+  "Quantum Machine Learning",
 ];
 
 const projects = [
@@ -52,9 +19,8 @@ const projects = [
     category: "GRAPH INTELLIGENCE",
     title: "UGEM-CCL",
     description:
-      "An evidential learning and graph neural network framework for detecting fraudulent activities in complex graph-structured data.",
+      "An evidential learning and graph neural network framework exploring the detection of fraudulent activities in complex graph-structured data.",
     tags: ["GNN", "Fraud Detection", "Evidential Learning"],
-    icon: Network,
   },
   {
     number: "02",
@@ -63,34 +29,30 @@ const projects = [
     description:
       "A post-quantum secure multi-party computation framework for confidential neural network inference.",
     tags: ["Post-Quantum", "MPC", "CKKS"],
-    icon: Fingerprint,
   },
   {
     number: "03",
     category: "INTELLIGENT SECURITY",
     title: "VAE-TF",
     description:
-      "A variational autoencoder-based framework for identifying complex and previously unseen financial fraud patterns.",
+      "A variational autoencoder-based approach for identifying complex and previously unseen financial fraud patterns.",
     tags: ["VAE", "Financial Fraud", "Deep Learning"],
-    icon: BrainCircuit,
   },
   {
     number: "04",
     category: "COMPUTATIONAL INTELLIGENCE",
     title: "Hybrid Chaos-Based Image Encryption",
     description:
-      "Investigating hybrid chaotic maps for image encryption, including key evolution, confusion and diffusion.",
+      "Exploring hybrid chaotic maps for image encryption, including key evolution, confusion and diffusion.",
     tags: ["Chaotic Maps", "Image Encryption", "IoT"],
-    icon: Microscope,
   },
   {
     number: "05",
-    category: "BLOCKCHAIN & EDGE COMPUTING",
+    category: "BLOCKCHAIN AND EDGE COMPUTING",
     title: "LedgerCache",
     description:
       "Exploring blockchain-enabled secure caching mechanisms for edge computing and resource-constrained IoT environments.",
     tags: ["Blockchain", "Edge Computing", "IoT"],
-    icon: Database,
   },
   {
     number: "06",
@@ -99,32 +61,35 @@ const projects = [
     description:
       "Investigating noise characteristics, computational behaviour and learning capabilities of quantum neural network models.",
     tags: ["QNN", "PennyLane", "Quantum ML"],
-    icon: Cpu,
   },
 ];
 
-const publications = [
+const researchDirections = [
   {
-    number: "01",
     title: "Hybrid Chaos System for Secure Image Encryption",
     description:
-      "Research on combining chaotic maps for image encryption, with applications in IoT security.",
-    status: "Research direction",
+      "Exploring chaotic maps for secure image encryption and IoT applications.",
   },
   {
-    number: "02",
-    title: "Variational Autoencoder Framework for Financial Fraud Detection",
+    title:
+      "Variational Autoencoder Framework for Financial Fraud Detection",
     description:
-      "Deep learning-based exploration of anomaly detection in financial transaction data.",
-    status: "Research direction",
+      "Deep learning-based approaches to anomaly detection in financial transaction data.",
   },
   {
-    number: "03",
     title: "Post-Quantum Secure Multi-Party Computation",
     description:
-      "Investigating confidential neural network inference using post-quantum cryptographic techniques.",
-    status: "Research direction",
+      "Exploring confidential neural network inference using post-quantum cryptographic techniques.",
   },
+];
+
+const navigation = [
+  ["Home", "#home"],
+  ["About", "#about"],
+  ["Research", "#research"],
+  ["Projects", "#projects"],
+  ["Publications", "#publications"],
+  ["Contact", "#contact"],
 ];
 
 export default function Home() {
@@ -137,12 +102,7 @@ export default function Home() {
       {/* NAVIGATION */}
 
       <header className="site-header">
-        <a
-          href="#home"
-          className="brand"
-          onClick={closeMenu}
-          aria-label="Bhoopendra Kumar home"
-        >
+        <a href="#home" className="brand" onClick={closeMenu}>
           <div className="brand-mark">BK</div>
 
           <div className="brand-name">
@@ -154,34 +114,33 @@ export default function Home() {
         </a>
 
         <button
+          type="button"
           className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation"
           aria-expanded={menuOpen}
         >
-          {menuOpen ? <X size={21} /> : <Menu size={21} />}
+          {menuOpen ? "✕" : "☰"}
         </button>
 
         <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
-          <a href="#home" onClick={closeMenu}>Home</a>
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#research" onClick={closeMenu}>Research</a>
-          <a href="#projects" onClick={closeMenu}>Projects</a>
-          <a href="#publications" onClick={closeMenu}>Publications</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+          {navigation.map(([label, href]) => (
+            <a key={href} href={href} onClick={closeMenu}>
+              {label}
+            </a>
+          ))}
 
           <a
             href="#contact"
             className="nav-cta"
             onClick={closeMenu}
           >
-            Get in touch
-            <ArrowUpRight size={14} />
+            Get in Touch <span>↗</span>
           </a>
         </nav>
       </header>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
 
       <section className="hero section-wrap" id="home">
         <div className="hero-content">
@@ -191,53 +150,55 @@ export default function Home() {
           </div>
 
           <p className="hero-overline">
-            Researcher. Educator. Innovator.
+            Researcher · Educator · Innovator
           </p>
 
           <h1>
-            Exploring the
+            Bhoopendra
             <br />
-            intelligent
-            <br />
-            future<span className="heading-period">.</span>
+            Kumar<span className="heading-period">.</span>
           </h1>
 
           <p className="hero-subheading">
-            Researching the intersection of
-            <span> AI, security & intelligent systems.</span>
+            Computer Science &amp; Applied Mathematics
           </p>
 
           <p className="hero-lede">
-            I am an academic and researcher interested in building
-            intelligent, reliable and privacy-aware computing
-            systems. My research explores how artificial
-            intelligence, machine learning and emerging
-            computational technologies can address real-world
-            challenges.
+            Exploring the intersection of{" "}
+            <span className="italic-line">
+              Artificial Intelligence, Machine Learning
+              and Intelligent Systems.
+            </span>
+          </p>
+
+          <p className="hero-lede">
+            I am an academic and researcher interested in
+            developing intelligent, reliable and secure
+            computing systems. My work explores how emerging
+            computational technologies can address
+            meaningful real-world challenges.
           </p>
 
           <div className="hero-actions">
             <a href="#research" className="button button-primary">
-              Explore my research
-              <ArrowRight size={15} />
+              Explore My Work <span>→</span>
             </a>
 
             <a href="#contact" className="button button-secondary">
-              <Mail size={14} />
-              Contact me
+              Contact Me <span>↗</span>
             </a>
           </div>
 
           <div className="hero-meta">
             <div className="meta-item">
-              <span className="meta-label">CURRENT ROLE</span>
+              <span className="meta-label">CURRENT POSITION</span>
               <strong>Assistant Professor</strong>
             </div>
 
             <div className="meta-divider" />
 
             <div className="meta-item">
-              <span className="meta-label">AFFILIATION</span>
+              <span className="meta-label">INSTITUTION</span>
               <strong>VIPS-TC, Delhi</strong>
             </div>
 
@@ -250,58 +211,50 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ABSTRACT RESEARCH VISUAL */}
+        {/* YOUR PHOTOGRAPH */}
 
-        <div className="hero-panel">
-          <div className="panel-topline">
-            <span>RESEARCH & INNOVATION</span>
-            <span className="panel-index">FIG. 01</span>
-          </div>
+        <div className="hero-visual">
+          <div className="portrait-frame">
+            <Image
+              src="/profile.jpg"
+              alt="Bhoopendra Kumar"
+              width={700}
+              height={1000}
+              priority
+              className="portrait-image"
+            />
 
-          <div className="research-emblem">
-            <div className="emblem-ring ring-one" />
-            <div className="emblem-ring ring-two" />
-
-            <span className="emblem-dot dot-one" />
-            <span className="emblem-dot dot-two" />
-            <span className="emblem-dot dot-three" />
-
-            <div className="emblem-core">
-              <BrainCircuit size={51} strokeWidth={1.25} />
-            </div>
-          </div>
-
-          <div className="panel-bottom">
-            <span className="panel-rule" />
-            <div>
-              <strong>Intelligence meets innovation.</strong>
-              <p>Exploring ideas. Engineering possibilities.</p>
+            <div className="portrait-caption">
+              <strong>Bhoopendra Kumar</strong>
+              <span>
+                Assistant Professor · Computer Science
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ACADEMIC CREDENTIALS */}
+      {/* ACADEMIC HIGHLIGHTS */}
 
       <div className="credential-strip">
         <div className="credential-inner section-wrap">
           <div>
-            <GraduationCap size={19} />
+            <span>✦</span>
             M.Tech · MNIT Jaipur
           </div>
 
           <div>
-            <BookOpen size={18} />
+            <span>✦</span>
             Academic Research
           </div>
 
           <div>
-            <BrainCircuit size={18} />
+            <span>✦</span>
             Artificial Intelligence
           </div>
 
           <div>
-            <Code2 size={18} />
+            <span>✦</span>
             Computational Intelligence
           </div>
         </div>
@@ -312,37 +265,40 @@ export default function Home() {
       <section className="content-section section-wrap" id="about">
         <div className="section-heading">
           <div>
-            <span className="section-kicker">01 — ABOUT ME</span>
+            <span className="section-kicker">
+              01 — ABOUT ME
+            </span>
 
             <h2>
-              A passion for
+              A journey of
               <br />
-              learning and discovery.
+              <span className="script-accent">
+                curiosity and discovery.
+              </span>
             </h2>
           </div>
 
           <p className="section-intro">
             Bridging academic teaching, scientific exploration
-            and practical computing to contribute towards the
-            next generation of intelligent technologies.
+            and practical computing to contribute towards
+            the next generation of intelligent technologies.
           </p>
         </div>
 
         <div className="about-grid">
           <article className="about-card featured-about">
-            <div className="card-icon">
-              <GraduationCap size={22} />
-            </div>
+            <div className="card-icon">✦</div>
 
             <span className="card-label">ACADEMIC PROFILE</span>
 
-            <h3>Educator & Researcher</h3>
+            <h3>Educator &amp; Researcher</h3>
 
             <p>
-              Currently serving as an Assistant Professor in
-              the Department of Computer Science and Applied
-              Mathematics at Vivekananda Institute of
-              Professional Studies – Technical Campus, Delhi.
+              Currently serving as an Assistant Professor
+              in the Department of Computer Science and
+              Applied Mathematics at Vivekananda Institute
+              of Professional Studies – Technical Campus,
+              Delhi.
             </p>
 
             <div className="about-foot">
@@ -352,9 +308,7 @@ export default function Home() {
           </article>
 
           <article className="about-card">
-            <div className="card-icon">
-              <Microscope size={22} />
-            </div>
+            <div className="card-icon">✧</div>
 
             <span className="card-label">EDUCATION</span>
 
@@ -374,18 +328,18 @@ export default function Home() {
           </article>
 
           <article className="about-card">
-            <div className="card-icon">
-              <Lightbulb size={22} />
-            </div>
+            <div className="card-icon">✦</div>
 
-            <span className="card-label">RESEARCH PHILOSOPHY</span>
+            <span className="card-label">
+              RESEARCH PHILOSOPHY
+            </span>
 
             <h3>Ideas into impact</h3>
 
             <p>
-              Combining theoretical foundations with practical
-              experimentation to develop meaningful
-              technological solutions.
+              Combining theoretical foundations with
+              practical experimentation to develop
+              meaningful technological solutions.
             </p>
 
             <div className="tag-row">
@@ -417,29 +371,29 @@ export default function Home() {
               systems, advanced learning architectures and
               secure computational frameworks.
             </p>
+
+            <p className="script-accent">
+              Learning without limits.
+            </p>
           </div>
 
           <div className="interest-list">
-            {researchAreas.map((area, index) => {
-              const Icon = area.icon;
+            {researchAreas.map((area, index) => (
+              <div className="interest-item" key={area}>
+                <span className="interest-number">
+                  0{index + 1}
+                </span>
 
-              return (
-                <div className="interest-item" key={area.title}>
-                  <span className="interest-number">
-                    0{index + 1}
-                  </span>
+                <span>{area}</span>
 
-                  <span>{area.title}</span>
-
-                  <Icon size={17} />
-                </div>
-              );
-            })}
+                <span>↗</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SELECTED PROJECTS */}
+      {/* PROJECTS */}
 
       <section className="content-section section-wrap" id="projects">
         <div className="section-heading">
@@ -448,47 +402,52 @@ export default function Home() {
               03 — SELECTED WORK
             </span>
 
-            <h2>Research & projects.</h2>
+            <h2>
+              Research &amp; projects.
+            </h2>
+
+            <p className="script-accent">
+              Ideas transformed into experiments.
+            </p>
           </div>
 
           <p className="section-intro">
-            A selection of research directions and
-            computational projects exploring the possibilities
-            of intelligent and secure systems.
+            Selected research projects and computational
+            explorations across artificial intelligence,
+            graph learning, quantum computing and security.
           </p>
         </div>
 
         <div className="project-grid">
-          {projects.map((project) => {
-            const Icon = project.icon;
+          {projects.map((project) => (
+            <article
+              className="project-card"
+              key={project.number}
+            >
+              <div className="project-top">
+                <span>{project.number}</span>
+                <span>✧</span>
+              </div>
 
-            return (
-              <article className="project-card" key={project.number}>
-                <div className="project-top">
-                  <span>{project.number}</span>
-                  <Icon size={21} />
-                </div>
+              <span className="project-type">
+                {project.category}
+              </span>
 
-                <span className="project-type">
-                  {project.category}
-                </span>
+              <h3>{project.title}</h3>
 
-                <h3>{project.title}</h3>
+              <p>{project.description}</p>
 
-                <p>{project.description}</p>
-
-                <div className="tag-row">
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
+              <div className="tag-row">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* PUBLICATIONS */}
+      {/* PUBLICATIONS AND RESEARCH DIRECTIONS */}
 
       <section
         className="publication-section"
@@ -497,39 +456,40 @@ export default function Home() {
         <div className="section-wrap publication-layout">
           <div>
             <span className="section-kicker">
-              04 — PUBLICATIONS & RESEARCH
+              04 — PUBLICATIONS &amp; RESEARCH
             </span>
 
             <h2>
               Knowledge through
               <br />
-              research.
+              <span className="script-accent">
+                research and exploration.
+              </span>
             </h2>
 
             <p className="section-intro">
-              Research directions and ongoing explorations
-              in intelligent computing, machine learning
-              and information security.
+              Research directions in intelligent computing,
+              machine learning and information security.
             </p>
           </div>
 
           <div className="publication-list">
-            {publications.map((publication) => (
+            {researchDirections.map((item, index) => (
               <article
                 className="publication-item"
-                key={publication.number}
+                key={item.title}
               >
                 <span className="pub-kind">
-                  RESEARCH · {publication.number}
+                  RESEARCH · 0{index + 1}
                 </span>
 
                 <div>
-                  <h3>{publication.title}</h3>
+                  <h3>{item.title}</h3>
 
-                  <p>{publication.description}</p>
+                  <p>{item.description}</p>
 
                   <span className="pub-note">
-                    {publication.status}
+                    Research direction
                   </span>
                 </div>
               </article>
@@ -550,10 +510,14 @@ export default function Home() {
           </span>
 
           <h2>
-            Have an idea?
+            Great ideas begin
             <br />
-            Let us explore it together.
+            with a conversation.
           </h2>
+
+          <p className="script-accent">
+            Let us explore possibilities together.
+          </p>
 
           <p>
             I welcome opportunities for academic collaboration,
@@ -569,16 +533,14 @@ export default function Home() {
               rel="noreferrer"
               className="button button-primary"
             >
-              Connect on LinkedIn
-              <ExternalLink size={14} />
+              LinkedIn ↗
             </a>
 
             <a
               href="mailto:"
               className="button button-secondary"
             >
-              <Mail size={14} />
-              Email me
+              Email Me ✉
             </a>
           </div>
         </div>
@@ -605,7 +567,6 @@ export default function Home() {
 
         <a href="#home" className="back-top">
           Back to top ↑
-          <ArrowDown size={12} />
         </a>
       </footer>
     </main>
